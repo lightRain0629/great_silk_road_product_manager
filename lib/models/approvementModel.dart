@@ -12,8 +12,8 @@ class OrderApprovementModel {
   });
 
   static OrderApprovementModel fromJson(json) => OrderApprovementModel(
-      id: json['id'],
-      shortName: json['shortName'],
-      fullDistribNo: json['fullDistribNo'],
-      releaseDate: json['releaseDate']);
+      id: json['id'] ?? 'id',
+      shortName: json['shortName'] ?? 'shortName',
+      fullDistribNo: json['fullDistribNo'] ?? 'fullDistribNo',
+      releaseDate: json['releaseDate'] ?? 'releaseDate');
 }

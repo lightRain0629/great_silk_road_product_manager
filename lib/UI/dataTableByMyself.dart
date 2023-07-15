@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:great_silk_road_product_manager/models/product.dart';
-
+import 'package:intl/intl.dart' as intl;
 import '../models/productModel.dart';
+import 'mainPageWithDrawer.dart';
 
 class DataTableBYY extends StatefulWidget {
   final List<dynamic> products;
@@ -12,19 +13,19 @@ class DataTableBYY extends StatefulWidget {
 }
 
 class _DataTableBYYState extends State<DataTableBYY> {
-  cutLastSymbols<String>(String date) {
+  // cutLastSymbols<String>(String date) {
     
-    List dateList = date.toString().split('');
-    dynamic res = [];
-    if (dateList.length == 4) {
-      res = [];
-    } else {
-      for (var i = 0; i < 10; i++) {
-        res.add(dateList[i]);
-      }
-    }
-    return res.toList().join('');
-  }
+  //   List dateList = date.toString().split('');
+  //   dynamic res = [];
+  //   if (dateList.length == 4) {
+  //     res = [];
+  //   } else {
+  //     for (var i = 0; i < 10; i++) {
+  //       res.add(dateList[i]);
+  //     }
+  //   }
+  //   return res.toList().join('');
+  // }
 
   dynamic productsSearched = [];
   TextEditingController searchController = TextEditingController();
@@ -53,7 +54,8 @@ class _DataTableBYYState extends State<DataTableBYY> {
     return Column(
       children: [
         TextField(
-          onChanged: (value) {
+          onChanged: (value) async {
+                await Future.delayed(const Duration(milliseconds: 300));
             setState(() {
               _searchResult = value;
               productsSearched = widget.products
@@ -79,9 +81,13 @@ class _DataTableBYYState extends State<DataTableBYY> {
                   child: Text('Clear'))),
         ),
         Expanded(
-          child: SingleChildScrollView(
-              child: dataTableInside(columns, productsSearched)),
-        ),
+          // child: SingleChildScrollView(
+          //   scrollDirection: Axis.horizontal,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+                child: dataTableInside(columns, productsSearched)),
+          ),
+        // ),
       ],
     );
   }
@@ -133,6 +139,7 @@ class _DataTableBYYState extends State<DataTableBYY> {
             DataCell(Text(product['barcode'].toString())),
             DataCell(Text(product['name'].toString())),
             DataCell(Text(cutLastSymbols(product['expireDate'].toString()))),
+            // DataCell(Text('${intl.DateFormat('dd.MM.yyyy').parse(product['expireDate'])}')),
             DataCell(Text(product['unitName'].toString())),
             DataCell(Container(
                 alignment: Alignment.centerRight,

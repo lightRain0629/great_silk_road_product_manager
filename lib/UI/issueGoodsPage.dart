@@ -11,15 +11,16 @@ import 'package:great_silk_road_product_manager/models/orderProductModel.dart';
 import '../bloc/fetch_data_bloc.dart';
 
 class IssueGoodsPage extends StatelessWidget {
+  final bool isUpdated;
   final List<OrderProductModel> orderList;
   const IssueGoodsPage({
     Key? key,
-    required this.orderList,
+    required this.orderList, required this.isUpdated,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return DataTableForOrder(products: orderList);
+    return DataTableForOrder(products: orderList, isUpdated: isUpdated,);
         // return BlocProvider(create: (context)=> FetchDataBloc(RepositoryProvider.of<ApiGetOrderProducts>(context))..add(LoadProductEvent()), child: BlocBuilder<FetchDataBloc, FetchDataState>(
         //     builder: (context, state) {
         //   if (state is FetchDataLoadingState) {

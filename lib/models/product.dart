@@ -43,7 +43,8 @@ class Product {
       brandId: json['brandId'],
       brandName: json['brandName'],
       barcode: json['barcode'],
-      expireDate: json['expireData'],
+      expireDate: json['expireDate'],
+      // expireDate: DateFormat(json['expireDate'].parse(savedDateString)),
       fullGoodName: json['fullGoodName'],
       unitId: json['unitId'],
       unitName: json['unitName'],
@@ -51,3 +52,6 @@ class Product {
       result: json['result'],
       forSale: json['forSale']);
 }
+
+
+// DateTime tempDate = new DateFormat("yyyy-MM-dd hh:mm:ss").parse(savedDateString);

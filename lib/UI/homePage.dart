@@ -9,7 +9,6 @@ import 'package:great_silk_road_product_manager/bloc/fetch_data_bloc.dart';
 import 'package:great_silk_road_product_manager/models/product.dart';
 import 'package:great_silk_road_product_manager/models/productModel.dart';
 import 'package:great_silk_road_product_manager/storage/storage.dart';
-import 'package:great_silk_road_product_manager/testDataStorage/emptyList.dart';
 import 'package:great_silk_road_product_manager/testDataStorage/userTestDataStorage.dart';
 
 import '../apiBYY/apiGetProduct.dart';

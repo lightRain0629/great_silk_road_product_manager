@@ -27,16 +27,16 @@ class ApiLogin {
         return body;
       } else if (response.statusCode == 400) {
         print(400);
-        return 'Username and password are required';
+        return 400;
       } else if (response.statusCode == 401) {
         print(401);
-        return 'Username or password is wrong';
+        return 401;
       } else if (response.statusCode == 429) {
         print(429);
-        return 'Block fields';
+        return 429;
       } else if (response.statusCode == 500) {
-        print(500);
-        return 'Unexpected error in the server side';
+        // print(500);
+        return 500;
       } else {
         print(response.body);
         print('write');
